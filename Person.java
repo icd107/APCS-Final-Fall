@@ -56,4 +56,9 @@ public class Person
     {
         income *= 1.2;
     }
+    
+    public String toString()
+    {
+        return name + ":\n\tAge: " + age + "\n\tIs a child: " + isChild + "\n\tIncome: " + income;   
+    }
 }
