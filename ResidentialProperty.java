@@ -14,7 +14,10 @@ public class ResidentialProperty
     
     ResidentialProperty()
     {
-        price = 100000;
+        while(price > 1000 && price < 1000000)
+        {
+            price = Math.random() * 1000000;
+        }
         rent = 1000;
         forSale = true;
         squareFeet = 1000;
@@ -31,31 +34,22 @@ public class ResidentialProperty
         this.name = name;
         this.maxPetsAllowed = maxPetsAllowed;
         forSale = true;
-        residents = new Person[maxResidentsAllowed];
+        if(maxResidentsAllowed > 0)
+        {
+            residents = new Person[maxResidentsAllowed];
+        }
+        else
+        {
+            ThrowNewIllegalException("At least one resident must be allowed.");
+        }
         squareFeet = 0;
         rooms = new ArrayList<Room>();
         pets = new ArrayList<Pet>();
     }
-    
-    double getPrice()
-    {
-        return price;   
-    }
+
     boolean forSale()
     {
         return forSale;   
-    }
-    double getRent()
-    {
-        return rent;   
-    }
-    int getSquareFeet()
-    {
-        return squareFeet;   
-    }
-    String getName()
-    {
-        return name;   
     }
     String getResidents()
     {
@@ -89,7 +83,7 @@ public class ResidentialProperty
     }
     Room getRoom(int index)
     {
-        return rooms.get(index);
+        return room.get(index);
     }
     Room getRoom(String name)
     {
@@ -114,13 +108,24 @@ public class ResidentialProperty
         }
         return false;
     }
-    int getNumberOfResidents()
+    boolean isOccupied()
     {
-        return residents.length;   
-    }
-    int getNumberOfPets()
-    {
-        return pets.size();   
+        int i = 0;
+        do
+        {
+            if(residents[i] = null)
+            {
+                return true;
+            }
+            else if(pets.size() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                i++
+            }
+        } while(residents.length > 0 || pets.size() > 0)
     }
     void putForSale()
     {
@@ -130,26 +135,26 @@ public class ResidentialProperty
     {
         forSale = false;   
     }
-    void setPetsAllowed(int pets)
-    {
-        maxPetsAllowed = pets;   
-    }
     void addPets(Pet pet)
     {
         pets.add(pet);   
     }
-    //not finished
     void evictMeanPets()
     {
-        String str = "";
+        String str = "The pets being evicted are:\n";
         for(int i = 0; i < pets.size(); i++)
         {
             if(!pets.get(i).isFriendly())
             {
-                str += pets.get(i).getName() + " ";
+                str += pets.get(i).getName() + "\n";
                 pets.remove(i);
                 i--;
             }
         }
+    }
+
+    public String toString()
+    {
+        return getRooms() + getPets() + getResidents();
     }
 }
