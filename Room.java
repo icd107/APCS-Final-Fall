@@ -14,6 +14,7 @@ public class Room
         this.squareFeet = squareFeet;
     }
     
+    //getter
     String getName()
     {
         return name;
@@ -22,6 +23,7 @@ public class Room
     {
         return squareFeet;
     }
+    //setters
     void setSquareFeet(int squareFeet)
     {
         this.squareFeet = squareFeet;
@@ -29,6 +31,6 @@ public class Room
     
     public String toString()
     {
-        return name + ":\n\tSquare Feet: " + squarefeet;
+        return name + ":\n\t\tSquare Feet: " + squareFeet;
     }
 }

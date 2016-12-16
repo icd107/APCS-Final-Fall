@@ -12,14 +12,15 @@ public class Person
         this.isChild = false;
         this.income = 0.0;
     }
-    Person(String name, int age, boolean isChild, double income)
+    Person(String name, int age, double income)
     {
         this.name = name;
         this.age = age;
-        this.isChild = isChild;
+        this.isChild = isChild();
         this.income = income;
     }
     
+    //getters
     public String getName()
     {
         return name;
@@ -30,12 +31,20 @@ public class Person
     }
     public boolean isChild()
     {
-        return isChild;
+        if(age < 18)
+            return true;
+        return false;
     }
     public double getIncome()
     {
         return income;
     }
+    public String firstName()
+    {
+        return name.substring(0, name.indexOf(" "));
+    }
+
+    //setters
     public void ageUp()
     {
         age++;
@@ -59,6 +68,6 @@ public class Person
     
     public String toString()
     {
-        return name + ":\n\tAge: " + age + "\n\tIs a child: " + isChild + "\n\tIncome: " + income;   
+        return name + ":\n\t\tFirst name: " + firstName() + "\n\t\tAge: " + age + "\n\t\tIs a child: " + isChild + "\n\t\tIncome: " + income;   
     }
 }

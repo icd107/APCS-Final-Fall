@@ -1,41 +1,30 @@
 public class Pet
 {
     String name;
-    String type;
-    String color;
     boolean isFriendly;
     
     Pet()
     {
         name = "";
-        type = "";
-        color = "";
         isFriendly = false;
     }
-    Pet(String name, String type, String color, boolean isFriendly)
+    Pet(String name, boolean isFriendly)
     {
         this.name = name;
-        this.type = type;
-        this.color = color;
         this.isFriendly = isFriendly;
     }
     
+    //getters
     public String getName()
     {
         return name;
-    }
-    public String getType()
-    {
-        return type;
-    }
-    public String getColor()
-    {
-        return color;
     }
     public boolean isFriendly()
     {
         return isFriendly;
     }
+
+    //setters
     public void trainPet()
     {
         isFriendly = true;
@@ -43,6 +32,6 @@ public class Pet
     
     public String toString()
     {
-        return name + "\n\tType: " + type + "\n\tColor: " + color + "\n\tIs friendly: " + isFriendly;
+        return name + "\n\t\tIs friendly: " + isFriendly;
     }
 }
